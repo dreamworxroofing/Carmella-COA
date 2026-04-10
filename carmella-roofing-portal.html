@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carmella Condo Association — 5-Year Roofing Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b2a;
+    --navy-mid: #162436;
+    --navy-light: #1e3048;
+    --slate: #2c4a6e;
+    --accent: #e8890c;
+    --accent-light: #f5a832;
+    --green: #2ecc8a;
+    --yellow: #f5c842;
+    --red: #e85c4a;
+    --text: #e8edf2;
+    --text-muted: #8ba0b8;
+    --border: rgba(255,255,255,0.07);
+    --card: rgba(255,255,255,0.04);
+    --card-hover: rgba(255,255,255,0.07);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--navy);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--navy-mid);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+  }
+
+  .header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .header-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .header-logo {
+    width: 32px;
+    height: 32px;
+    background: var(--accent);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 1rem;
+    color: white;
+    font-weight: 400;
+  }
+
+  .header-title {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .header-nav {
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  .nav-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 0.4rem 0.9rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s;
+    letter-spacing: 0.03em;
+  }
+
+  .nav-btn:hover, .nav-btn.active {
+    background: var(--card);
+    color: var(--text);
+  }
+
+  .nav-btn.active {
+    color: var(--accent-light);
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy) 60%);
+    border-bottom: 1px solid var(--border);
+    padding: 3.5rem 2rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(232,137,12,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .hero-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    max-width: 900px;
+  }
+
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    transition: all 0.2s;
+  }
+
+  .stat-card:hover {
+    background: var(--card-hover);
+    border-color: rgba(255,255,255,0.12);
+  }
+
+  .stat-value {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-value.accent { color: var(--accent-light); }
+  .stat-value.green { color: var(--green); }
+  .stat-value.yellow { color: var(--yellow); }
+  .stat-value.red { color: var(--red); }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* MAIN CONTENT */
+  main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+  }
+
+  /* SECTIONS */
+  .section {
+    display: none;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .section.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem;
+    margin-bottom: 0.4rem;
+    color: var(--text);
+  }
+
+  .section-sub {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+  }
+
+  /* BUILDINGS TABLE */
+  .buildings-filters {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .filter-btn {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 0.35rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .filter-btn:hover, .filter-btn.active {
+    color: var(--text);
+    border-color: rgba(255,255,255,0.2);
+    background: var(--card-hover);
+  }
+
+  .filter-btn.active { color: var(--accent-light); border-color: var(--accent); }
+
+  .table-wrap {
+    background: var(--navy-mid);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+
+  thead {
+    background: var(--navy-light);
+    border-bottom: 1px solid var(--border);
+  }
+
+  th {
+    padding: 0.9rem 1.2rem;
+    text-align: left;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+    cursor: pointer;
+  }
+
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: var(--card); }
+
+  td {
+    padding: 0.85rem 1.2rem;
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  td.muted { color: var(--text-muted); font-size: 0.82rem; }
+
+  .score-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .score-5 { background: rgba(46,204,138,0.15); color: var(--green); }
+  .score-4 { background: rgba(46,204,138,0.1); color: #7ee8b8; }
+  .score-3 { background: rgba(245,200,66,0.15); color: var(--yellow); }
+  .score-2 { background: rgba(232,92,74,0.1); color: #f0876e; }
+  .score-1 { background: rgba(232,92,74,0.2); color: var(--red); }
+
+  .score-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: currentColor;
+  }
+
+  .year-badge {
+    background: var(--navy-light);
+    border-radius: 6px;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.78rem;
+    color: var(--accent-light);
+    text-decoration: none;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    background: rgba(232,137,12,0.08);
+    border: 1px solid rgba(232,137,12,0.2);
+    transition: all 0.15s;
+    margin-right: 0.3rem;
+  }
+
+  .link-btn:hover {
+    background: rgba(232,137,12,0.15);
+    border-color: rgba(232,137,12,0.4);
+  }
+
+  .link-btn.cam { color: #7ec8f0; background: rgba(126,200,240,0.08); border-color: rgba(126,200,240,0.2); }
+  .link-btn.cam:hover { background: rgba(126,200,240,0.15); }
+
+  /* PLAN TIMELINE */
+  .timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  @media (max-width: 900px) {
+    .timeline-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .year-column {
+    background: var(--navy-mid);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .year-header {
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .year-label {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--text);
+  }
+
+  .year-count {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    background: var(--card);
+    padding: 0.2rem 0.5rem;
+    border-radius: 10px;
+  }
+
+  .year-buildings {
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .year-building-item {
+    background: var(--card);
+    border-radius: 8px;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--border);
+  }
+
+  .year-building-name { font-weight: 500; color: var(--text); }
+  .year-building-cost { color: var(--accent-light); font-weight: 600; font-size: 0.75rem; }
+
+  .year-total {
+    padding: 0.75rem 1.2rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .year-total-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+  .year-total-value { font-family: 'DM Serif Display', serif; font-size: 1.15rem; color: var(--accent-light); }
+
+  /* RESERVE FUND */
+  .reserve-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 768px) { .reserve-grid { grid-template-columns: 1fr; } }
+
+  .reserve-card {
+    background: var(--navy-mid);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.75rem;
+  }
+
+  .reserve-card-title {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+  }
+
+  .reserve-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.875rem;
+  }
+
+  .reserve-row:last-child { border-bottom: none; }
+  .reserve-row-label { color: var(--text-muted); }
+  .reserve-row-value { font-weight: 600; color: var(--text); }
+  .reserve-row-value.highlight { color: var(--accent-light); font-family: 'DM Serif Display', serif; font-size: 1.1rem; }
+
+  .bar-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.82rem;
+  }
+
+  .bar-label { width: 60px; color: var(--text-muted); font-weight: 500; flex-shrink: 0; }
+
+  .bar-track {
+    flex: 1;
+    height: 28px;
+    background: var(--card);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+    display: flex;
+    align-items: center;
+    padding-left: 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: white;
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 60px;
+  }
+
+  /* MAP */
+  .map-container {
+    background: var(--navy-mid);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    height: 520px;
+    position: relative;
+  }
+
+  .map-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: var(--text-muted);
+  }
+
+  .map-icon {
+    width: 64px; height: 64px;
+    background: var(--card);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem;
+  }
+
+  .map-placeholder p { font-size: 0.88rem; max-width: 300px; text-align: center; line-height: 1.5; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 1.5rem 2rem;
+    margin-top: 3rem;
+  }
+
+  .footer-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-dreamworx {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  .footer-logo-mark {
+    width: 22px; height: 22px;
+    background: var(--accent);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 0.65rem;
+    color: white;
+  }
+
+  .footer-dreamworx strong { color: var(--text); }
+  .footer-date { font-size: 0.75rem; color: var(--text-muted); }
+
+  /* DEMO BADGE */
+  .demo-banner {
+    background: rgba(232,137,12,0.1);
+    border: 1px solid rgba(232,137,12,0.3);
+    border-radius: 8px;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
+    color: var(--accent-light);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* SCORE SUMMARY BARS */
+  .score-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .score-sum-card {
+    background: var(--navy-mid);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .score-sum-circle {
+    width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    flex-shrink: 0;
+  }
+
+  .c5 { background: rgba(46,204,138,0.15); color: var(--green); }
+  .c4 { background: rgba(46,204,138,0.1); color: #7ee8b8; }
+  .c3 { background: rgba(245,200,66,0.15); color: var(--yellow); }
+  .c2 { background: rgba(232,92,74,0.1); color: #f0876e; }
+  .c1 { background: rgba(232,92,74,0.2); color: var(--red); }
+
+  .score-sum-info { font-size: 0.82rem; }
+  .score-sum-count { font-size: 1.3rem; font-weight: 600; color: var(--text); line-height: 1; }
+  .score-sum-desc { color: var(--text-muted); font-size: 0.75rem; margin-top: 0.1rem; }
+
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-brand">
+      <div class="header-logo">D</div>
+      <span class="header-title">Dreamworx Roofing — HOA Portal</span>
+    </div>
+    <nav class="header-nav">
+      <button class="nav-btn active" onclick="showSection('overview', this)">Overview</button>
+      <button class="nav-btn" onclick="showSection('buildings', this)">Buildings</button>
+      <button class="nav-btn" onclick="showSection('timeline', this)">5-Year Plan</button>
+      <button class="nav-btn" onclick="showSection('reserve', this)">Reserve Fund</button>
+      <button class="nav-btn" onclick="showSection('map', this)">Map</button>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">5-Year Roofing Plan · 2025–2030</div>
+    <h1 class="hero-name">Carmella Condo Association</h1>
+    <p class="hero-sub">Mechanicsburg, PA · Silver Spring Township · 190 Units · 78 Buildings</p>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-value accent">78</div>
+        <div class="stat-label">Total Buildings</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value green">31</div>
+        <div class="stat-label">Good Condition (4–5)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value yellow">28</div>
+        <div class="stat-label">Monitor (Score 3)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value red">19</div>
+        <div class="stat-label">Priority Replace (1–2)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value accent">$1.94M</div>
+        <div class="stat-label">5-Year Est. Total</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <!-- OVERVIEW -->
+  <div class="section active" id="overview">
+    <div class="demo-banner">
+      ⚡ Demo Version — Placeholder data shown. Final scores and estimates will be populated after inspection.
+    </div>
+
+    <h2 class="section-heading">Community Overview</h2>
+    <p class="section-sub">Condition summary across all 78 buildings as of inspection date.</p>
+
+    <div class="score-summary">
+      <div class="score-sum-card">
+        <div class="score-sum-circle c5">5</div>
+        <div class="score-sum-info">
+          <div class="score-sum-count">12</div>
+          <div class="score-sum-desc">Excellent — No action needed</div>
+        </div>
+      </div>
+      <div class="score-sum-card">
+        <div class="score-sum-circle c4">4</div>
+        <div class="score-sum-info">
+          <div class="score-sum-count">19</div>
+          <div class="score-sum-desc">Good — Monitor in 3–5 yrs</div>
+        </div>
+      </div>
+      <div class="score-sum-card">
+        <div class="score-sum-circle c3">3</div>
+        <div class="score-sum-info">
+          <div class="score-sum-count">28</div>
+          <div class="score-sum-desc">Fair — Plan within 5 yrs</div>
+        </div>
+      </div>
+      <div class="score-sum-card">
+        <div class="score-sum-circle c2">2</div>
+        <div class="score-sum-info">
+          <div class="score-sum-count">13</div>
+          <div class="score-sum-desc">Poor — Replace 1–2 yrs</div>
+        </div>
+      </div>
+      <div class="score-sum-card">
+        <div class="score-sum-circle c1">1</div>
+        <div class="score-sum-info">
+          <div class="score-sum-count">6</div>
+          <div class="score-sum-desc">Critical — Immediate action</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reserve-grid">
+      <div class="reserve-card">
+        <div class="reserve-card-title">Key Community Facts</div>
+        <div class="reserve-row"><span class="reserve-row-label">Builder</span><span class="reserve-row-value">Landmark Homes</span></div>
+        <div class="reserve-row"><span class="reserve-row-label">Construction Period</span><span class="reserve-row-value">2007 – 2017</span></div>
+        <div class="reserve-row"><span class="reserve-row-label">Roof Type</span><span class="reserve-row-value">Architectural Shingle</span></div>
+        <div class="reserve-row"><span class="reserve-row-label">Oldest Roofs (Age)</span><span class="reserve-row-value">~18 years</span></div>
+        <div class="reserve-row"><span class="reserve-row-label">Newest Roofs (Age)</span><span class="reserve-row-value">~8 years</span></div>
+        <div class="reserve-row"><span class="reserve-row-label">Avg. Sq Ft / Building</span><span class="reserve-row-value">~3,200 sq ft</span></div>
+        <div class="reserve-row"><span class="reserve-row-label">Association Type</span><span class="reserve-row-value">Condo (exterior maintained)</span></div>
+      </div>
+      <div class="reserve-card">
+        <div class="reserve-card-title">5-Year Budget Summary</div>
+        <div class="reserve-row"><span class="reserve-row-label">Year 1 (2025)</span><span class="reserve-row-value">$312,000</span></div>
+        <div class="reserve-row"><span class="reserve-row-label">Year 2 (2026)</span><span class="reserve-row-value">$428,000</span></div>
+        <div class="reserve-row"><span class="reserve-row-label">Year 3 (2027)</span><span class="reserve-row-value">$386,000</span></div>
+        <div class="reserve-row"><span class="reserve-row-label">Year 4 (2028)</span><span class="reserve-row-value">$498,000</span></div>
+        <div class="reserve-row"><span class="reserve-row-label">Year 5 (2029)</span><span class="reserve-row-value">$316,000</span></div>
+        <div class="reserve-row"><span class="reserve-row-label">Total 5-Year Estimate</span><span class="reserve-row-value highlight">$1,940,000</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BUILDINGS -->
+  <div class="section" id="buildings">
+    <h2 class="section-heading">Building Condition Scores</h2>
+    <p class="section-sub">All 78 buildings across 10 streets. Click any row for detail.</p>
+
+    <div class="buildings-filters">
+      <button class="filter-btn active" onclick="filterBuildings('all', this)">All (78)</button>
+      <button class="filter-btn" onclick="filterBuildings('critical', this)">⚠ Critical (6)</button>
+      <button class="filter-btn" onclick="filterBuildings('poor', this)">Poor (13)</button>
+      <button class="filter-btn" onclick="filterBuildings('fair', this)">Fair (28)</button>
+      <button class="filter-btn" onclick="filterBuildings('good', this)">Good (31)</button>
+    </div>
+
+    <div class="table-wrap">
+      <table id="buildings-table">
+        <thead>
+          <tr>
+            <th>Building</th>
+            <th>Street</th>
+            <th>Score</th>
+            <th>Roof Age</th>
+            <th>Plan Year</th>
+            <th>Est. Cost</th>
+            <th>Photos</th>
+            <th>Estimate</th>
+          </tr>
+        </thead>
+        <tbody id="buildings-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="section" id="timeline">
+    <h2 class="section-heading">5-Year Replacement Timeline</h2>
+    <p class="section-sub">Prioritized by condition score. Critical and poor condition buildings addressed first.</p>
+    <div class="timeline-grid" id="timeline-grid"></div>
+  </div>
+
+  <!-- RESERVE FUND -->
+  <div class="section" id="reserve">
+    <h2 class="section-heading">Reserve Fund Projection</h2>
+    <p class="section-sub">Annual cost estimates based on current condition scores and sq ft. Figures are estimates — final numbers provided after full inspection.</p>
+
+    <div class="reserve-card" style="margin-bottom: 1.5rem;">
+      <div class="reserve-card-title">Annual Budget Breakdown</div>
+      <div class="bar-chart" id="reserve-bars"></div>
+    </div>
+
+    <div class="reserve-grid">
+      <div class="reserve-card">
+        <div class="reserve-card-title">Assumptions & Notes</div>
+        <div class="reserve-row"><span class="reserve-row-label">Avg cost / sq ft</span><span class="reserve-row-value">$4.80 – $5.40</span></div>
+        <div class="reserve-row"><span class="reserve-row-label">Material</span><span class="reserve-row-value">Architectural shingle</span></div>
+        <div class="reserve-row"><span class="reserve-row-label">Warranty</span><span class="reserve-row-value">Lifetime shingle + 10yr labor</span></div>
+        <div class="reserve-row"><span class="reserve-row-label">Escalation rate</span><span class="reserve-row-value">~4% / year</span></div>
+        <div class="reserve-row"><span class="reserve-row-label">Scope</span><span class="reserve-row-value">Tear-off, replace, gutters</span></div>
+      </div>
+      <div class="reserve-card">
+        <div class="reserve-card-title">Total Program Summary</div>
+        <div class="reserve-row"><span class="reserve-row-label">Buildings addressed</span><span class="reserve-row-value">78 of 78</span></div>
+        <div class="reserve-row"><span class="reserve-row-label">Critical / Priority (Yr 1–2)</span><span class="reserve-row-value">19 buildings</span></div>
+        <div class="reserve-row"><span class="reserve-row-label">Planned (Yr 3–5)</span><span class="reserve-row-value">59 buildings</span></div>
+        <div class="reserve-row"><span class="reserve-row-label">5-Year Total Est.</span><span class="reserve-row-value highlight">$1,940,000</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAP -->
+  <div class="section" id="map">
+    <h2 class="section-heading">Community Map</h2>
+    <p class="section-sub">Interactive map of Carmella Condo Association. Building locations and condition overlays added after inspection.</p>
+    <div class="map-container">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3038.8!2d-77.0050!3d40.2350!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c8c4f1234abcdf%3A0x1!2sCarmella+Dr%2C+Mechanicsburg%2C+PA+17050!5e1!3m2!1sen!2sus!4v1"
+        width="100%" height="100%" style="border:0; filter: invert(90%) hue-rotate(180deg) saturate(0.8);" allowfullscreen="" loading="lazy">
+      </iframe>
+    </div>
+    <p style="font-size:0.78rem; color: var(--text-muted); margin-top: 0.75rem;">
+      📍 A custom Google My Maps with color-coded building pins will be embedded here after inspection is complete.
+    </p>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-dreamworx">
+      <div class="footer-logo-mark">D</div>
+      <span>Prepared by <strong>Dreamworx Roofing</strong> · Mechanicsburg, PA · (717) 000-0000</span>
+    </div>
+    <div class="footer-date">Report generated: <span id="report-date"></span></div>
+  </div>
+</footer>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────────
+const streets = [
+  'Carmella Dr','Bluebell Dr','Wintergreen Dr','Daisy Dr',
+  'Iris Ln','Lilly Ln','Poppy Cir','Primrose Ln','Violet Cir','Chickory Cir'
+];
+
+const streetCounts = [20, 10, 8, 8, 7, 7, 6, 5, 4, 3]; // totals 78
+
+function pickScore(seed) {
+  const r = ((seed * 1664525 + 1013904223) & 0xffffffff) >>> 0;
+  const n = r % 100;
+  if (n < 8)  return 1;
+  if (n < 24) return 2;
+  if (n < 60) return 3;
+  if (n < 85) return 4;
+  return 5;
+}
+
+const buildings = [];
+let idx = 0;
+streets.forEach((street, si) => {
+  for (let b = 0; b < streetCounts[si]; b++) {
+    idx++;
+    const score = pickScore(idx * 37 + si * 13);
+    const baseYear = 2007 + Math.floor(((idx * 17) % 11));
+    const age = 2025 - baseYear;
+    const sqft = 2800 + (idx % 8) * 200;
+    const cost = Math.round(sqft * (4.8 + (idx % 5) * 0.15) / 100) * 100;
+    const planYear = score === 1 ? 2025 : score === 2 ? 2026 : score === 3 ? (idx % 2 === 0 ? 2027 : 2028) : 2029;
+    buildings.push({
+      id: idx,
+      address: `${100 + b*2 + (si*2)} ${street}`,
+      street,
+      score,
+      year: baseYear,
+      age,
+      sqft,
+      cost,
+      planYear
+    });
+  }
+});
+
+// ── BUILDINGS TABLE ───────────────────────────────────────────────────────────
+function scoreClass(s) { return `score-${s}`; }
+function scoreLabel(s) {
+  return ['','Critical','Poor','Fair','Good','Excellent'][s];
+}
+
+function renderBuildings(filter) {
+  const tbody = document.getElementById('buildings-tbody');
+  const filtered = filter === 'all' ? buildings :
+    filter === 'critical' ? buildings.filter(b => b.score === 1) :
+    filter === 'poor'     ? buildings.filter(b => b.score === 2) :
+    filter === 'fair'     ? buildings.filter(b => b.score === 3) :
+    buildings.filter(b => b.score >= 4);
+
+  tbody.innerHTML = filtered.map(b => `
+    <tr data-score="${b.score}">
+      <td><strong>${b.address}</strong></td>
+      <td class="muted">${b.street}</td>
+      <td><span class="score-badge ${scoreClass(b.score)}"><span class="score-dot"></span>${b.score} — ${scoreLabel(b.score)}</span></td>
+      <td><span class="year-badge">${b.year} · ${b.age} yrs</span></td>
+      <td class="muted">${b.planYear}</td>
+      <td><strong>$${b.cost.toLocaleString()}</strong></td>
+      <td><a class="link-btn cam" href="#">📷 Photos</a></td>
+      <td><a class="link-btn" href="#">📋 Estimate</a></td>
+    </tr>
+  `).join('');
+}
+
+function filterBuildings(filter, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderBuildings(filter);
+}
+
+// ── TIMELINE ─────────────────────────────────────────────────────────────────
+function renderTimeline() {
+  const years = [2025, 2026, 2027, 2028, 2029];
+  const grid = document.getElementById('timeline-grid');
+  grid.innerHTML = years.map(yr => {
+    const yb = buildings.filter(b => b.planYear === yr);
+    const total = yb.reduce((s, b) => s + b.cost, 0);
+    return `
+      <div class="year-column">
+        <div class="year-header">
+          <span class="year-label">${yr}</span>
+          <span class="year-count">${yb.length} buildings</span>
+        </div>
+        <div class="year-buildings">
+          ${yb.map(b => `
+            <div class="year-building-item">
+              <span class="year-building-name">${b.address.split(' ').slice(0,2).join(' ')}</span>
+              <span class="year-building-cost">$${(b.cost/1000).toFixed(0)}k</span>
+            </div>
+          `).join('')}
+        </div>
+        <div class="year-total">
+          <span class="year-total-label">Est. Total</span>
+          <span class="year-total-value">$${total.toLocaleString()}</span>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// ── RESERVE BARS ─────────────────────────────────────────────────────────────
+function renderReserve() {
+  const years = [2025, 2026, 2027, 2028, 2029];
+  const totals = years.map(yr => buildings.filter(b => b.planYear === yr).reduce((s,b) => s+b.cost, 0));
+  const max = Math.max(...totals);
+  const container = document.getElementById('reserve-bars');
+  container.innerHTML = years.map((yr, i) => {
+    const pct = Math.round((totals[i] / max) * 100);
+    return `
+      <div class="bar-row">
+        <span class="bar-label">${yr}</span>
+        <div class="bar-track">
+          <div class="bar-fill" style="width: ${pct}%">$${(totals[i]/1000).toFixed(0)}k</div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// ── NAV ───────────────────────────────────────────────────────────────────────
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+document.getElementById('report-date').textContent = new Date().toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'});
+renderBuildings('all');
+renderTimeline();
+renderReserve();
+</script>
+</body>
+</html>
